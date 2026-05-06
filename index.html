@@ -2,174 +2,158 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Инструменты ЗиБ</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-    background: #0f1117;
-    color: #e8e8e8;
-    min-height: 100vh;
-    padding: 20px 16px 32px;
-  }
-  h1 {
-    font-size: 15px;
-    font-weight: 600;
-    color: #888;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #222;
-  }
-  .section {
-    margin-bottom: 22px;
-  }
-  .section-title {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #555;
-    margin-bottom: 8px;
-    padding-left: 4px;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 7px;
-  }
-  .btn {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    padding: 10px 12px;
-    border-radius: 8px;
-    background: #1a1d24;
-    border: 1px solid #252830;
-    text-decoration: none;
-    color: #d0d0d0;
-    font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.15s, border-color 0.15s;
-    line-height: 1.2;
-  }
-  .btn:hover {
-    background: #22262f;
-    border-color: #363a45;
-    color: #fff;
-  }
-  .btn.our {
-    border-color: #1a3a2a;
-    background: #111a15;
-  }
-  .btn.our:hover {
-    background: #162010;
-    border-color: #2a5a3a;
-  }
-  .icon {
-    font-size: 16px;
-    flex-shrink: 0;
-    width: 20px;
-    text-align: center;
-  }
-  .label { flex: 1; }
-  .sub {
-    font-size: 10px;
-    color: #555;
-    margin-top: 1px;
-  }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;background:#0f1117;color:#e0e0e0;padding:14px 12px 28px;font-size:13px}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-bottom:11px;border-bottom:1px solid #1e2128}
+.client{font-size:13px;font-weight:600;color:#fff}
+.deal-tag{font-size:10px;background:#1a2a3a;color:#4a9eff;padding:2px 8px;border-radius:10px}
+.section{margin-bottom:15px}
+.stitle{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#444;margin-bottom:6px;padding-left:2px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.btn{display:flex;align-items:center;gap:8px;padding:9px 10px;border-radius:8px;background:#181b22;border:1px solid #22262e;text-decoration:none;color:#ccc;transition:background .12s,border-color .12s}
+.btn:hover{background:#1e2230;border-color:#303540;color:#fff}
+.btn.our{background:#101a14;border-color:#1a3022}
+.btn.our:hover{background:#131f17;border-color:#2a5035}
+.ico{font-size:15px;width:20px;text-align:center;flex-shrink:0}
+.info{display:flex;flex-direction:column;gap:1px;min-width:0;overflow:hidden}
+.lbl{font-size:12px;font-weight:500;color:#d8d8d8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sub{font-size:10px;color:#555;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.badge{background:#c9a84c22;color:#c9a84c;font-size:9px;padding:0 4px;border-radius:4px;font-weight:700;margin-left:3px}
 </style>
 </head>
 <body>
 
-<h1>Инструменты ЗиБ</h1>
+<div class="header">
+  <div class="client" id="client-name">Загрузка…</div>
+  <div class="deal-tag" id="deal-tag"></div>
+</div>
 
+<div id="tools" style="display:none">
 <div class="section">
-  <div class="section-title">Проверка клиента</div>
+  <div class="stitle">Проверка клиента</div>
   <div class="grid">
-    <a class="btn" href="https://fssp.gov.ru/iss/ip/" target="_blank">
-      <span class="icon">⚖️</span>
-      <div class="label">ФССП<div class="sub">Исполнительные производства</div></div>
+    <a class="btn" id="btn-fssp" href="#" target="_blank">
+      <span class="ico">⚖️</span>
+      <span class="info"><span class="lbl">ФССП<span class="badge">★</span></span><span class="sub" id="sub-fssp">Исполн. производства</span></span>
     </a>
-    <a class="btn" href="https://bankrot.fedresurs.ru/" target="_blank">
-      <span class="icon">📋</span>
-      <div class="label">Федресурс<div class="sub">Реестр банкротств</div></div>
+    <a class="btn" id="btn-fedres" href="#" target="_blank">
+      <span class="ico">📋</span>
+      <span class="info"><span class="lbl">Федресурс<span class="badge">★</span></span><span class="sub">Реестр банкротств</span></span>
     </a>
     <a class="btn" href="http://services.fms.gov.ru/info-service.htm?sid=2000" target="_blank">
-      <span class="icon">🪪</span>
-      <div class="label">Паспорт ФМС<div class="sub">Проверка действительности</div></div>
+      <span class="ico">🪪</span>
+      <span class="info"><span class="lbl">Паспорт ФМС</span><span class="sub">Действительность</span></span>
     </a>
     <a class="btn" href="https://t.me/vqpe7rr2lkss_bot" target="_blank">
-      <span class="icon">👁</span>
-      <div class="label">Глаз бога<div class="sub">Пробив по телефону</div></div>
+      <span class="ico">👁</span>
+      <span class="info"><span class="lbl">Глаз бога</span><span class="sub" id="sub-glaz">Пробив телефона</span></span>
     </a>
   </div>
 </div>
-
 <div class="section">
-  <div class="section-title">Долги и кредиты</div>
+  <div class="stitle">Долги и кредиты</div>
   <div class="grid">
     <a class="btn" href="https://person.nbki.ru/login" target="_blank">
-      <span class="icon">📊</span>
-      <div class="label">НБКИ<div class="sub">Кредитная история</div></div>
+      <span class="ico">📊</span>
+      <span class="info"><span class="lbl">НБКИ</span><span class="sub">Кредитная история</span></span>
     </a>
     <a class="btn" href="https://credistory.ru/rating" target="_blank">
-      <span class="icon">📈</span>
-      <div class="label">ОКБ<div class="sub">Кредитный рейтинг</div></div>
+      <span class="ico">📈</span>
+      <span class="info"><span class="lbl">ОКБ</span><span class="sub">Кредитный рейтинг</span></span>
     </a>
     <a class="btn" href="https://xn--90adear.xn--p1ai/check/fines/" target="_blank">
-      <span class="icon">🚗</span>
-      <div class="label">Штрафы ГИБДД<div class="sub">Долги по штрафам</div></div>
+      <span class="ico">🚗</span>
+      <span class="info"><span class="lbl">Штрафы ГИБДД</span><span class="sub">Долги по штрафам</span></span>
     </a>
     <a class="btn" href="https://kad.arbitr.ru/" target="_blank">
-      <span class="icon">🏛️</span>
-      <div class="label">Картотека дел<div class="sub">Арбитражные суды</div></div>
+      <span class="ico">🏛️</span>
+      <span class="info"><span class="lbl">Картотека дел</span><span class="sub">Арбитраж</span></span>
     </a>
   </div>
 </div>
-
 <div class="section">
-  <div class="section-title">Имущество и ипотека</div>
+  <div class="stitle">Имущество и ипотека</div>
   <div class="grid">
     <a class="btn" href="https://lk.rosreestr.ru/eservices/real-estate-objects-online" target="_blank">
-      <span class="icon">🏠</span>
-      <div class="label">Росреестр<div class="sub">Имущество клиента</div></div>
+      <span class="ico">🏠</span>
+      <span class="info"><span class="lbl">Росреестр</span><span class="sub">Имущество клиента</span></span>
     </a>
     <a class="btn" href="https://pro.domclick.ru/dashboard" target="_blank">
-      <span class="icon">🔑</span>
-      <div class="label">Дом Клик Pro<div class="sub">Ипотечные договоры</div></div>
+      <span class="ico">🔑</span>
+      <span class="info"><span class="lbl">Дом Клик Pro</span><span class="sub">Ипотечные договоры</span></span>
     </a>
     <a class="btn" href="https://m2.ru/personal-area" target="_blank">
-      <span class="icon">📐</span>
-      <div class="label">М2<div class="sub">Недвижимость / ипотека</div></div>
+      <span class="ico">📐</span>
+      <span class="info"><span class="lbl">М2</span><span class="sub">Недвижимость / ипотека</span></span>
     </a>
   </div>
 </div>
-
 <div class="section">
-  <div class="section-title">Наши инструменты</div>
+  <div class="stitle">Наши инструменты</div>
   <div class="grid">
     <a class="btn our" href="https://zakon-balans.ru" target="_blank">
-      <span class="icon">⚡</span>
-      <div class="label">Закон и Баланс<div class="sub">Наш сайт</div></div>
+      <span class="ico">⚡</span>
+      <span class="info"><span class="lbl">Закон и Баланс</span><span class="sub">zakon-balans.ru</span></span>
     </a>
     <a class="btn our" href="https://zib.bitrix24site.ru/crm_form_weswd/" target="_blank">
-      <span class="icon">📝</span>
-      <div class="label">CRM форма<div class="sub">Регистрация лида</div></div>
-    </a>
-    <a class="btn our" href="https://zib.bitrix24.ru" target="_blank">
-      <span class="icon">💼</span>
-      <div class="label">Битрикс24<div class="sub">Наша CRM</div></div>
+      <span class="ico">📝</span>
+      <span class="info"><span class="lbl">CRM-форма</span><span class="sub">Зарегистрировать лид</span></span>
     </a>
     <a class="btn our" href="https://atma.guru" target="_blank">
-      <span class="icon">🎓</span>
-      <div class="label">АТМА ГУРУ<div class="sub">Обучение партнёров</div></div>
+      <span class="ico">🎓</span>
+      <span class="info"><span class="lbl">АТМА ГУРУ</span><span class="sub">Обучение партнёров</span></span>
+    </a>
+    <a class="btn our" href="https://zib.bitrix24.ru" target="_blank">
+      <span class="ico">💼</span>
+      <span class="info"><span class="lbl">Битрикс24</span><span class="sub">CRM</span></span>
     </a>
   </div>
 </div>
+</div>
 
+<script src="//api.bitrix24.com/api/v1/"></script>
+<script>
+function enc(s){ return encodeURIComponent(s||''); }
+
+function buildLinks(last, first, phone, dealId){
+  var name = [last,first].filter(Boolean).join(' ') || 'Клиент';
+  document.getElementById('client-name').textContent = '🔍 ' + name;
+  document.getElementById('deal-tag').textContent = 'сделка #' + (dealId||'—');
+
+  document.getElementById('btn-fssp').href =
+    'https://fssp.gov.ru/iss/ip/?is=7&lastname='+enc(last)+'&firstname='+enc(first)+'&secondname=&byDate=on&region=0&name=&search=%D0%9D%D0%B0%D0%B9%D1%82%D0%B8';
+  document.getElementById('sub-fssp').textContent = name;
+
+  document.getElementById('btn-fedres').href =
+    'https://bankrot.fedresurs.ru/DebtorsSearch.aspx?Name='+enc(name);
+
+  var ph = (phone||'').replace(/\D/g,'');
+  if(ph){ document.getElementById('sub-glaz').textContent = '+'+ph; }
+
+  document.getElementById('tools').style.display = 'block';
+}
+
+BX24.init(function(){
+  BX24.placement.call('get', {}, function(data){
+    var dealId = (data && data.ID) ? data.ID : '';
+    if(!dealId){ buildLinks('','','',''); return; }
+
+    BX24.callMethod('crm.deal.get', {id: dealId}, function(res){
+      var deal = res.data() || {};
+      var cid = deal.CONTACT_ID || '';
+      if(!cid){ buildLinks('','',''  ,dealId); return; }
+
+      BX24.callMethod('crm.contact.get', {id: cid}, function(cr){
+        var c = cr.data() || {};
+        var phones = c.PHONE || [];
+        buildLinks(c.LAST_NAME||'', c.NAME||'', phones.length?phones[0].VALUE:'', dealId);
+      });
+    });
+  });
+});
+</script>
 </body>
 </html>
